@@ -13,6 +13,9 @@ import requests as req
 
 # Create your views here.
 
+SONGS_URL = "https://songs-sn-labs-dty3152.labs-prod-openshift-san-a45631dc5778dc6371c67d206ba9ae5c-0000.us-east.containers.appdomain.cloud"
+PHOTO_URL = "https://pictures.15n4hiu8qzxv.us-south.codeengine.appdomain.cloud/"
+
 def signup(request):
     if request.method == "POST":
         username = request.POST.get("username")
