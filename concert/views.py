@@ -40,12 +40,12 @@ def index(request):
 
 
 def songs(request):
-    song_list = req.get("SONGS_URL/song").json()
+    song_list = req.get(f"{SONGS_URL}/song").json()
     return render(request, "songs.html", {"songs": song_list["songs"]})
 
 
 def photos(request):
-    p = req.get("PHOTO_URL/picture").json()
+    p = req.get(f"{PHOTO_URL}/picture").json()
     return render(request, "photos.html", {"photos": p})
 
 
