@@ -10,11 +10,11 @@ from concert.forms import LoginForm, SignUpForm
 from concert.models import Concert, ConcertAttending
 import requests as req
 
-
 # Create your views here.
 
-SONGS_URL = "https://songs-sn-labs-dty3152.labs-prod-openshift-san-a45631dc5778dc6371c67d206ba9ae5c-0000.us-east.containers.appdomain.cloud"
+SONGS_URL = "http://songs-sn-labs-dty3152.labs-prod-openshift-san-a45631dc5778dc6371c67d206ba9ae5c-0000.us-east.containers.appdomain.cloud"
 PHOTO_URL = "https://pictures.15n4hiu8qzxv.us-south.codeengine.appdomain.cloud/"
+
 
 def signup(request):
     if request.method == "POST":
@@ -40,12 +40,13 @@ def index(request):
 
 
 def songs(request):
-    song_list = req.get(f"{SONGS_URL}/song").json()
+    song_list = req.get(
+        "http://songs-sn-labs-dty3152.labs-prod-openshift-san-a45631dc5778dc6371c67d206ba9ae5c-0000.us-east.containers.appdomain.cloud/song").json()
     return render(request, "songs.html", {"songs": song_list["songs"]})
 
 
 def photos(request):
-    p = req.get(f"{PHOTO_URL}/picture").json()
+    p = req.get("https://pictures.15n4hiu8qzxv.us-south.codeengine.appdomain.cloud/picture").json()
     return render(request, "photos.html", {"photos": p})
 
 
