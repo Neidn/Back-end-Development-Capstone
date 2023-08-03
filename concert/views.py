@@ -24,7 +24,9 @@ def index(request):
 def songs(request):
     # songs = {"songs":[]}
     # return render(request, "songs.html", {"songs": [insert list here]})
-    pass
+    songs = {"songs": [{"id": 1, "title": "duis faucibus accumsan odio curabitur convallis",
+                        "lyrics": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."}]}
+    return render(request, "songs.html", songs)
 
 
 def photos(request):
@@ -32,11 +34,14 @@ def photos(request):
     # return render(request, "photos.html", {"photos": photos})
     pass
 
+
 def login_view(request):
     pass
 
+
 def logout_view(request):
     pass
+
 
 def concerts(request):
     pass
@@ -49,7 +54,8 @@ def concert_detail(request, id):
             status = obj.attendee.filter(user=request.user).first().attending
         except:
             status = "-"
-        return render(request, "concert_detail.html", {"concert_details": obj, "status": status, "attending_choices": ConcertAttending.AttendingChoices.choices})
+        return render(request, "concert_detail.html", {"concert_details": obj, "status": status,
+                                                       "attending_choices": ConcertAttending.AttendingChoices.choices})
     else:
         return HttpResponseRedirect(reverse("login"))
     pass
